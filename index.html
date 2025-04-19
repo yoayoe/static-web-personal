@@ -25,7 +25,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#deployment">Deployment</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger">
@@ -161,61 +160,6 @@
                             <a href="#" class="btn small-btn"><i class="fab fa-github"></i> Source Code</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deployment Guide Section -->
-    <section id="deployment" class="deployment">
-        <div class="container">
-            <div class="section-header">
-                <h2>Deployment Guide</h2>
-                <div class="underline"></div>
-            </div>
-            <div class="deployment-content">
-                <h3>How to Deploy to Cloudflare Pages</h3>
-                <div class="deployment-steps">
-                    <div class="step">
-                        <h4><span class="step-number">1</span> Connect Your GitHub Repository</h4>
-                        <p>Sign in to your Cloudflare dashboard, navigate to <b>Pages</b>, and click <b>Create a project</b>. Connect your GitHub account and select the repository containing this website.</p>
-                    </div>
-                    <div class="step">
-                        <h4><span class="step-number">2</span> Configure Build Settings</h4>
-                        <p>For a static site like this one, leave the build command empty and set the build output directory to the root folder <code>/</code> or <code>.</code></p>
-                        <div class="code-block">
-                            <pre>
-Build command: (leave empty)
-Build output directory: /
-                            </pre>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <h4><span class="step-number">3</span> Deploy Your Site</h4>
-                        <p>Click <b>Save and Deploy</b>. Cloudflare will automatically build and deploy your site. Once complete, you'll receive a unique <code>*.pages.dev</code> URL.</p>
-                    </div>
-                    <div class="step">
-                        <h4><span class="step-number">4</span> Set Up Custom Domain (Optional)</h4>
-                        <p>To use your own domain:</p>
-                        <ol>
-                            <li>Go to the <b>Custom domains</b> tab in your Cloudflare Pages project</li>
-                            <li>Click <b>Set up a custom domain</b></li>
-                            <li>Enter your domain name and follow the verification steps</li>
-                        </ol>
-                    </div>
-                    <div class="step">
-                        <h4><span class="step-number">5</span> Enable Automatic Deployments</h4>
-                        <p>Cloudflare Pages automatically deploys your site when you push changes to your GitHub repository. Each commit to your main branch will trigger a new deployment.</p>
-                    </div>
-                </div>
-                <div class="deployment-benefits">
-                    <h4>Benefits of Cloudflare Pages</h4>
-                    <ul>
-                        <li><i class="fas fa-bolt"></i> <b>Fast Global CDN</b> - Your site is served from Cloudflare's global network</li>
-                        <li><i class="fas fa-lock"></i> <b>Free SSL</b> - Automatic HTTPS for all sites</li>
-                        <li><i class="fas fa-code-branch"></i> <b>Preview Deployments</b> - Every pull request gets its own preview URL</li>
-                        <li><i class="fas fa-infinity"></i> <b>Unlimited Sites</b> - Deploy as many projects as you need</li>
-                    </ul>
                 </div>
             </div>
         </div>
