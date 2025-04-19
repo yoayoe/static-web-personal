@@ -111,9 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ========== DYNAMIC CONTENT LOADING FROM LOCALSTORAGE ==========
     
+    // Check if this is a reload from admin panel
+    const isAdminReload = new URLSearchParams(window.location.search).get('admin_update');
+    
     // Load personal information
     function loadPersonalInfo() {
-        const personalInfo = JSON.parse(localStorage.getItem('portfolio_personal_info')) || {};
+        // Force cache busting for localStorage data
+        const timestamp = new Date().getTime();
+        const personalInfo = JSON.parse(localStorage.getItem('portfolio_personal_info' + (isAdminReload ? '' : '?t=' + timestamp))) || {};
         
         // Update hero section
         const heroName = document.querySelector('.hero h1 .highlight');
@@ -288,4 +293,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSkills();
     loadProjects();
     loadContactInfo();
+    
+    // If this was loaded from admin panel, clear the URL parameter
+    if (isAdminReload) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
 });

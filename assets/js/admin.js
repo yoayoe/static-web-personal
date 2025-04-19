@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 localStorage.setItem('portfolio_personal_info', JSON.stringify(personalInfo));
                 alert('Personal information saved! Returning to main page...');
-                window.location.href = 'index.html';
+                window.location.href = 'index.html?admin_update=1';
             });
         }
     }
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 localStorage.setItem('portfolio_contact_info', JSON.stringify(contactInfo));
                 alert('Contact information saved! Returning to main page...');
-                window.location.href = 'index.html';
+                window.location.href = 'index.html?admin_update=1';
             });
         }
     }
@@ -563,21 +563,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveExperienceBtn) {
         saveExperienceBtn.addEventListener('click', function() {
             alert('Experience changes saved! Returning to main page...');
-            window.location.href = 'index.html';
+            window.location.href = 'index.html?admin_update=1';
         });
     }
     
     if (saveSkillsBtn) {
         saveSkillsBtn.addEventListener('click', function() {
             alert('Skills changes saved! Returning to main page...');
-            window.location.href = 'index.html';
+            window.location.href = 'index.html?admin_update=1';
         });
     }
     
     if (saveProjectsBtn) {
         saveProjectsBtn.addEventListener('click', function() {
             alert('Project changes saved! Returning to main page...');
-            window.location.href = 'index.html';
+            window.location.href = 'index.html?admin_update=1';
         });
     }
 });
