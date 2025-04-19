@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio Management</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Admin specific styles */
+        .admin-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .admin-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--bg-dark);
+            border-radius: var(--border-radius);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .admin-form {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .admin-form .form-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-form textarea {
+            height: 100px;
+        }
+        
+        .admin-form .experience-item, .admin-form .project-item, .admin-form .skill-item {
+            background: var(--bg-light);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+        
+        .admin-form .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--error);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .tab-navigation {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 15px;
+            background: var(--bg-dark);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .add-item-btn {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Panel Container -->
+    <div class="admin-container">
+        <div id="login-section" class="login-form">
+            <h2>Admin Login</h2>
+            <div class="underline" style="margin-bottom: 30px;"></div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn primary-btn">Login</button>
+            </form>
+        </div>
+        
+        <div id="admin-panel" class="hidden">
+            <div class="admin-header">
+                <h2>Portfolio Admin Panel</h2>
+                <button id="logout-btn" class="btn secondary-btn">Logout</button>
+            </div>
+            <div class="underline" style="margin-bottom: 30px;"></div>
+            
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="personal-info">Personal Info</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+                <button class="tab-btn" data-tab="skills">Skills</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="contact">Contact</button>
+            </div>
+            
+            <!-- Personal Information Tab -->
+            <div id="personal-info" class="tab-content active">
+                <div class="admin-section">
+                    <h3>Personal Information</h3>
+                    <form class="admin-form">
+                        <div class="form-row">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName">
+                        </div>
+                        <div class="form-row">
+                            <label for="title">Professional Title</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="form-row">
+                            <label for="tagline">Tagline</label>
+                            <input type="text" id="tagline" name="tagline">
+                        </div>
+                        <div class="form-row">
+                            <label for="about">About Me</label>
+                            <textarea id="about" name="about"></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Experience Tab -->
+            <div id="experience" class="tab-content">
+                <div class="admin-section">
+                    <h3>Professional Experience</h3>
+                    <div id="experience-list">
+                        <!-- Experience items will be added here dynamically -->
+                    </div>
+                    <button id="add-experience" class="add-item-btn">
+                        <i class="fas fa-plus"></i> Add Experience
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Skills Tab -->
+            <div id="skills" class="tab-content">
+                <div class="admin-section">
+                    <h3>Technical Skills</h3>
+                    <div id="technical-skills-list">
+                        <!-- Technical skills will be added here dynamically -->
+                    </div>
+                    <button id="add-technical-skill" class="add-item-btn">
+                        <i class="fas fa-plus"></i> Add Technical Skill
+                    </button>
+                    
+                    <h3 style="margin-top: 30px;">Soft Skills</h3>
+                    <div id="soft-skills-list">
+                        <!-- Soft skills will be added here dynamically -->
+                    </div>
+                    <button id="add-soft-skill" class="add-item-btn">
+                        <i class="fas fa-plus"></i> Add Soft Skill
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Projects Tab -->
+            <div id="projects" class="tab-content">
+                <div class="admin-section">
+                    <h3>Projects</h3>
+                    <div id="projects-list">
+                        <!-- Project items will be added here dynamically -->
+                    </div>
+                    <button id="add-project" class="add-item-btn">
+                        <i class="fas fa-plus"></i> Add Project
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <div class="admin-section">
+                    <h3>Contact Information</h3>
+                    <form class="admin-form">
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-row">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone">
+                        </div>
+                        <div class="form-row">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location">
+                        </div>
+                        <div class="form-row">
+                            <label for="linkedin">LinkedIn URL</label>
+                            <input type="url" id="linkedin" name="linkedin">
+                        </div>
+                        <div class="form-row">
+                            <label for="github">GitHub URL</label>
+                            <input type="url" id="github" name="github">
+                        </div>
+                        <div class="form-row">
+                            <label for="twitter">Twitter URL</label>
+                            <input type="url" id="twitter" name="twitter">
+                        </div>
+                        <button type="submit" class="btn primary-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Save All Changes Button -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="save-all" class="btn primary-btn">Save All Changes & Update Website</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
